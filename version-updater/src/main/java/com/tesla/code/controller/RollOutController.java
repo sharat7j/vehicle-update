@@ -2,6 +2,7 @@ package com.tesla.code.controller;
 
 
 import com.tesla.code.beans.RollOut;
+import com.tesla.code.beans.RollOutReport;
 import com.tesla.code.service.RollOutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,7 +17,7 @@ import java.util.logging.Logger;
 public class RollOutController {
     private final Logger logger = Logger.getLogger(String.valueOf(RollOutController.class));
 
-    RollOutService rollOutService;
+    private RollOutService rollOutService;
 
     @Autowired
     public RollOutController(RollOutService rollOutService) {
@@ -40,10 +41,10 @@ public class RollOutController {
         return rollOutService.listRollOuts(pageable);
     }
 
-    @RequestMapping(value = "/rollOutReport", method = RequestMethod.DELETE)
-    public ResponseStatus reportSummary(@RequestParam(value = "id") String identifier) {
+    @RequestMapping(value = "/rollOutReport", method = RequestMethod.GET)
+    public RollOutReport reportSummary(@RequestParam(value = "id") String identifier) {
         // cascaded delete of all jobs that belong to this roll out.
-        return null;
+        return rollOutService.generateReport(identifier);
     }
 
 }

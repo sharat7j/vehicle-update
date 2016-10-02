@@ -15,12 +15,8 @@ public class RollOut {
     private String name;
     @Column(length = 300)
     private String description;
+    private Long date_created;
 
-
-    public RollOut(String json) {
-        JSONObject jsonObject = new JSONObject(json);
-        this.id = id;
-    }
 
     public String getId() {
         return id;
@@ -45,4 +41,13 @@ public class RollOut {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Long getDate_created() {
+        return date_created;
+    }
+
+    public void setDate_created(Long date_created) {
+        this.date_created = date_created;
+    }
 }
+

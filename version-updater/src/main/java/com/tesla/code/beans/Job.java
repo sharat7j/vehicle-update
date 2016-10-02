@@ -6,6 +6,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,19 +16,23 @@ public class Job {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
+    @Column(unique = true)
     private String name;
     private String softwareVersion;
     @ManyToOne(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "rollout", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "rollout_id", referencedColumnName = "id", nullable = false)
     private RollOut rollOut;
     private String vehicleId;
-    private Instant date_created;
+    private Long date_created;
     @Transient
-    private List<JobStatus> jobStatusList;
+    private List<JobStatus> jobStatusList = new ArrayList<JobStatus>();
+    @Transient
+    private String rollOutId;
 
 
     public Job() {
+        this.date_created = Instant.now().getEpochSecond();
     }
 
     public String getName() {
@@ -70,11 +75,11 @@ public class Job {
         this.vehicleId = vehicleId;
     }
 
-    public Instant getDate_created() {
+    public Long getDate_created() {
         return date_created;
     }
 
-    public void setDate_created(Instant date_created) {
+    public void setDate_created(Long date_created) {
         this.date_created = date_created;
     }
 
@@ -84,5 +89,13 @@ public class Job {
 
     public void setJobStatusList(List<JobStatus> jobStatusList) {
         this.jobStatusList = jobStatusList;
+    }
+
+    public String getRollOutId() {
+        return rollOutId;
+    }
+
+    public void setRollOutId(String rollOutId) {
+        this.rollOutId = rollOutId;
     }
 }

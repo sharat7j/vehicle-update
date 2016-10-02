@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 @RequestMapping(value = "/v1")
 public class JobStatusController {
 
-    JobStatusService jobStatusService;
+    private JobStatusService jobStatusService;
 
     @Autowired
     public JobStatusController(JobStatusService jobStatusService) {
@@ -29,8 +29,9 @@ public class JobStatusController {
     }
 
     @RequestMapping(value = "/statusList", method = RequestMethod.GET)
-    public Page<JobStatus> listJobStatuses(Pageable pageable) {
-        return jobStatusService.listStatus(pageable);
+    public Page<JobStatus> listJobStatuses(Pageable pageable, @RequestParam(value = "rollOutId", required = false) String rollOutId,
+                                           @RequestParam(value = "jobId", required = false) String jobId) {
+        return jobStatusService.listStatus(pageable, rollOutId, jobId);
     }
 
 }

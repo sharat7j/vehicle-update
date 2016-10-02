@@ -1,5 +1,6 @@
 package com.tesla.code.beans;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tesla.code.utils.JobState;
 import org.hibernate.annotations.OnDelete;
@@ -18,16 +19,22 @@ public class JobStatus {
     @Column(nullable = false)
     private JobState state;
     @Column(nullable = false, unique = true)
-    private Instant timestamp;
+    private Long timestamp;
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "job_id")
+    @JsonIgnore
     private Job job;
+    @Transient
+    private String jobId;
 
+    public JobStatus() {
+
+    }
     public JobStatus(JobState state, Job job) {
         this.state = state;
         this.job = job;
-        this.timestamp = Instant.now();
+        this.timestamp = Instant.now().getEpochSecond();
     }
 
     public String getId() {
@@ -54,11 +61,19 @@ public class JobStatus {
         this.job = job;
     }
 
-    public Instant getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Instant timestamp) {
+    public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String getJobId() {
+        return jobId;
+    }
+
+    public void setJobId(String jobId) {
+        this.jobId = jobId;
     }
 }
