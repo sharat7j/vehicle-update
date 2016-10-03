@@ -1,10 +1,10 @@
 package com.tesla.code.beans;
 
-import jdk.nashorn.internal.runtime.logging.Logger;
-import org.json.JSONObject;
-
 import javax.persistence.*;
 
+/**
+ * Bean defining an update RollOut
+ */
 @Entity
 public class RollOut {
 

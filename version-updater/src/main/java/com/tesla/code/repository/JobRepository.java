@@ -22,4 +22,7 @@ public interface  JobRepository extends PagingAndSortingRepository<Job, String> 
 
     @Query(value = "select u from Job u order by u.date_created desc")
     Page<Job> findAllSorted(Pageable pageable);
+
+    @Query(value = "select u from Job u where u.name = :name")
+    Job nameExists(@Param("name") String name);
 }

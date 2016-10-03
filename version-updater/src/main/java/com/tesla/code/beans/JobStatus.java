@@ -9,6 +9,9 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import java.time.Instant;
 
+/**
+ * Bean containing the definition of a JobStatus.
+ */
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class JobStatus {

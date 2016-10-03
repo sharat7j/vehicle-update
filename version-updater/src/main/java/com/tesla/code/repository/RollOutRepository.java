@@ -31,4 +31,7 @@ public interface RollOutRepository extends PagingAndSortingRepository<RollOut, S
 
     @Query(value = "select u from Job u where u.rollOut.id = :id")
     List<Job> getJobsForRollOut(@Param("id") String id);
+
+    @Query(value = "select u from RollOut u where u.name = :name")
+    RollOut nameExists(@Param("name") String name);
 }

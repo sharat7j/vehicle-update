@@ -9,6 +9,9 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Bean defining the Job definition and its attributes.
+ */
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Job {
@@ -25,6 +28,7 @@ public class Job {
     private RollOut rollOut;
     private String vehicleId;
     private Long date_created;
+    // defining transient fields to aid in reporting. These wont make it to the DB
     @Transient
     private List<JobStatus> jobStatusList = new ArrayList<JobStatus>();
     @Transient

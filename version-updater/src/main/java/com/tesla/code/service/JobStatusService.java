@@ -2,6 +2,7 @@ package com.tesla.code.service;
 
 import com.tesla.code.beans.Job;
 import com.tesla.code.beans.JobStatus;
+import com.tesla.code.exceptions.MissingDataException;
 import com.tesla.code.repository.JobRepository;
 import com.tesla.code.repository.JobStatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +25,29 @@ public class JobStatusService {
         this.jobRepository = jobRepository;
     }
 
-    public JobStatus createJobStatus(JobStatus status) {
+    public JobStatus createJobStatus(JobStatus status) throws MissingDataException {
         if(status == null) {
-            return null;
+            throw new MissingDataException("Status object received was null. Cannot create new Job Status");
         }
-        status.setJob(jobRepository.findOne(status.getJobId()));
-        status.setTimestamp(Instant.now().getEpochSecond());
-        return jobStatusRepository.save(status);
+        if(status.getJobId() == null) {
+            throw new MissingDataException("Missing jobId in the JSON to create JobStatus. This is a required field");
+        }
+        Job job = jobRepository.findOne(status.getJobId());
+        if(job == null) {
+            throw new MissingDataException("Job with identifier " + status.getJobId() + " not found");
+        }
+        JobStatus currentStatus = jobRepository.getJobStatusList(job.getId()).get(0);
+        // Assumption: only update with new status if its not the same as the current status.
+        // kind of unclear here what the product expectation should be as it really depends on the broader product context
+        if(currentStatus.getState() == status.getState()) {
+            // just update the timestamp
+            currentStatus.setTimestamp(Instant.now().getEpochSecond());
+            return jobStatusRepository.save(currentStatus);
+        } else {
+            status.setJob(job);
+            status.setTimestamp(Instant.now().getEpochSecond());
+            return jobStatusRepository.save(status);
+        }
     }
 
     private class JobStatusConverter implements Converter<JobStatus, JobStatus> {

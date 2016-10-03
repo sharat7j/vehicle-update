@@ -2,6 +2,10 @@ package com.tesla.code.service;
 
 import com.tesla.code.beans.Job;
 import com.tesla.code.beans.JobStatus;
+import com.tesla.code.beans.RollOut;
+import com.tesla.code.controller.JobStatusController;
+import com.tesla.code.exceptions.MissingDataException;
+import com.tesla.code.exceptions.UniquenessException;
 import com.tesla.code.repository.JobRepository;
 import com.tesla.code.repository.JobStatusRepository;
 import com.tesla.code.repository.RollOutRepository;
@@ -15,6 +19,7 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Service
 public class JobService {
@@ -22,6 +27,7 @@ public class JobService {
     private JobRepository jobRepository;
     private JobStatusRepository jobStatusRepository;
     private RollOutRepository rollOutRepository;
+    private final Logger logger = Logger.getLogger(String.valueOf(JobStatusController.class));
 
     @Autowired
     public JobService(JobRepository jobRepository, JobStatusRepository jobStatusRepository, RollOutRepository rollOutRepository) {
@@ -30,8 +36,16 @@ public class JobService {
         this.rollOutRepository = rollOutRepository;
     }
 
-    public Job createJob(Job job) {
-        job.setRollOut(rollOutRepository.findOne(job.getRollOutId()));
+    public Job createJob(Job job) throws MissingDataException, UniquenessException {
+        RollOut rollOut = rollOutRepository.findOne(job.getRollOutId());
+        if (rollOut == null) {
+            throw new MissingDataException("No roll out found with identifier: " + job.getRollOutId());
+        }
+        job.setRollOut(rollOut);
+        // check if job exists
+        if (jobRepository.nameExists(job.getName()) != null) {
+            throw new UniquenessException("Job uniqueness constraint has been violated. Please use a different job name");
+        }
         jobRepository.save(job);
         JobStatus status = new JobStatus(JobState.CREATED, job);
         status.setJobId(job.getId());
@@ -42,10 +56,10 @@ public class JobService {
         return job;
     }
 
-    public Job cancelJob(String identifier) {
+    public void cancelJob(String identifier) throws MissingDataException {
         Job job = jobRepository.findOne(identifier);
-        if(job == null) {
-            return null;
+        if (job == null) {
+            throw new MissingDataException("No job found with identifier: " + identifier);
         }
         List<JobStatus> status = jobRepository.getJobStatusList(identifier);
         if (!status.isEmpty()) {
@@ -54,9 +68,10 @@ public class JobService {
                 JobStatus cancelStatus = new JobStatus(JobState.CANCELLED, job);
                 cancelStatus.setTimestamp(Instant.now().getEpochSecond());
                 jobStatusRepository.save(cancelStatus);
+            } else {
+                logger.info("Cancel was called on a job whose current state is " + st.getState());
             }
         }
-        return job;
     }
 
 
@@ -65,7 +80,7 @@ public class JobService {
             job.setJobStatusList(jobRepository.getJobStatusList(job.getId()));
             job.setRollOutId(job.getRollOut().getId());
             List<JobStatus> statuses = new ArrayList<>();
-            for(JobStatus status: job.getJobStatusList()) {
+            for (JobStatus status : job.getJobStatusList()) {
                 status.setJobId(status.getJob().getId());
                 statuses.add(status);
             }
@@ -77,17 +92,16 @@ public class JobService {
     public Page<Job> listJobs(Pageable pageable, String rollOutId) {
         if (rollOutId != null) {
             return jobRepository.getJobsForRollOut(pageable, rollOutId).map(new JobConverter());
-        }
-        else {
+        } else {
             return jobRepository.findAllSorted(pageable).map(new JobConverter());
         }
 
     }
 
-    public Job jobDetails(String identifier) {
+    public Job jobDetails(String identifier) throws MissingDataException {
         Job job = jobRepository.findOne(identifier);
         if (job == null) {
-            return null;
+            throw new MissingDataException("Job with identifier " + identifier + " not found");
         }
         List<JobStatus> statuses = jobRepository.getJobStatusList(identifier);
         job.setJobStatusList(statuses);
@@ -99,11 +113,12 @@ public class JobService {
         return jobRepository.getJobStatusList(identifier);
     }
 
-    public void deleteJob(String identifier) {
+    public void deleteJob(String identifier) throws MissingDataException {
         Job job = jobRepository.findOne(identifier);
-        if(job == null) {
-            return;
+        if (job == null) {
+            throw new MissingDataException("Could not find job with identifier: " + identifier);
         }
+        // ensure we dont violate referential integrity
         job.setRollOut(null);
         jobRepository.delete(job);
     }

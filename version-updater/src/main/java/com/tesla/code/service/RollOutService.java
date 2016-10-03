@@ -2,6 +2,8 @@ package com.tesla.code.service;
 
 import com.tesla.code.beans.RollOut;
 import com.tesla.code.beans.RollOutReport;
+import com.tesla.code.exceptions.MissingDataException;
+import com.tesla.code.exceptions.UniquenessException;
 import com.tesla.code.repository.RollOutRepository;
 import com.tesla.code.utils.JobState;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +29,12 @@ public class RollOutService {
         return rollOutRepository.findAll(pageable);
     }
 
-    public RollOut createRollOut(RollOut rollOut) {
+    public RollOut createRollOut(RollOut rollOut) throws UniquenessException {
         rollOut.setDate_created(Instant.now().getEpochSecond());
+        RollOut existingRollOut = rollOutRepository.nameExists(rollOut.getName());
+        if(existingRollOut != null) {
+            throw new UniquenessException("Rollout with name " + rollOut.getName() + " already exists");
+        }
         rollOutRepository.save(rollOut);
         return rollOut;
     }
@@ -37,10 +43,10 @@ public class RollOutService {
         rollOutRepository.deleteRollOut(id);
     }
 
-    public RollOutReport generateReport(String id) {
+    public RollOutReport generateReport(String id) throws MissingDataException {
         RollOut rollOut = rollOutRepository.findOne(id);
         if(rollOut == null) {
-            return null;
+            throw new MissingDataException("RollOut with identifier " + id + " does not exist");
         }
         RollOutReport report = new RollOutReport();
         report.setTotalJobCount(rollOutRepository.getJobCount(id));
