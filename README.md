@@ -1,5 +1,5 @@
 # Vehicle Software Management Platform
-Service to send and manage vehicle update workflows
+Service to manage vehicle update workflows
 
 ## What
 
