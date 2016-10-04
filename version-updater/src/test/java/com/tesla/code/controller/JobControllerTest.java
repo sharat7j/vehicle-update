@@ -16,7 +16,6 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
-import javax.servlet.http.HttpServletResponse;
 
 import java.time.Instant;
 import java.util.ArrayList;
