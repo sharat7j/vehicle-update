@@ -21,6 +21,8 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.tesla.code.util.Helpers.churnJob;
+import static com.tesla.code.util.Helpers.churnJobStatus;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
 import static org.mockito.Matchers.any;
@@ -92,29 +94,13 @@ public class JobControllerTest {
         jobController.cancelJob("1");
     }
 
-    private Job _churnJob() {
-        Long curTime = Instant.now().getEpochSecond();
-        Job job = new Job();
-        job.setName("Job Number :" + curTime);
-        job.setRollOutId("1");
-        job.setSoftwareVersion(curTime.toString());
-        job.setVehicleId("Vehicle: " + curTime % 1000);
-        return job;
-    }
-
-    private JobStatus _churnJobStatus() {
-        JobStatus status = new JobStatus();
-        status.setJobId("1");
-        status.setState(JobState.CREATED);
-        return status;
-    }
 
     @Test
     public void testListJobs() throws Exception {
         List<Job> jobList = new ArrayList<>();
-        jobList.add(_churnJob());
-        jobList.add(_churnJob());
-        jobList.add(_churnJob());
+        jobList.add(churnJob());
+        jobList.add(churnJob());
+        jobList.add(churnJob());
         PageImpl<Job> jobPage = new PageImpl<>(jobList);
 
         when(jobService.listJobs(any(Pageable.class), any(String.class))).thenReturn(jobPage);
@@ -131,7 +117,7 @@ public class JobControllerTest {
 
     @Test
     public void testJobDetails() throws Exception, MissingDataException {
-        Job job = _churnJob();
+        Job job = churnJob();
         when(jobService.jobDetails(any(String.class))).thenReturn(job);
         assertNotNull(jobController.jobDetails("1"));
         assertEquals(jobController.jobDetails("1"), job);
@@ -140,9 +126,9 @@ public class JobControllerTest {
     @Test
     public void testJobStatusesForJob() throws Exception {
         List<JobStatus> jobList = new ArrayList<>();
-        jobList.add(_churnJobStatus());
-        jobList.add(_churnJobStatus());
-        jobList.add(_churnJobStatus());
+        jobList.add(churnJobStatus());
+        jobList.add(churnJobStatus());
+        jobList.add(churnJobStatus());
         when(jobService.jobStatusForJob(any(String.class))).thenReturn(jobList);
         assertNotNull(jobController.jobStatusesForJob("1"));
         assertEquals(jobController.jobStatusesForJob("1"), jobList);
