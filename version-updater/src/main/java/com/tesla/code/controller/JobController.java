@@ -11,9 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
-import java.util.logging.Logger;
 
 /**
  * API interfaces that operate on Job
@@ -21,15 +19,11 @@ import java.util.logging.Logger;
 @RestController
 @RequestMapping(value = "/v1")
 public class JobController {
-    private final Logger logger = Logger.getLogger(String.valueOf(JobController.class));
-
     private JobService jobService;
-    private HttpServletResponse response;
 
     @Autowired
-    public JobController(JobService jobService, HttpServletResponse response) {
+    public JobController(JobService jobService) {
         this.jobService = jobService;
-        this.response = response;
     }
 
     /**
@@ -42,7 +36,7 @@ public class JobController {
      */
     @RequestMapping(value = "/job", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public Job createJob(@RequestBody Job job) throws MissingDataException, UniquenessException {
-        if(job.getRollOutId() == null) {
+        if(job == null || job.getRollOutId() == null) {
             throw new MissingDataException("JSON must contain the Roll Out ID to which this job is to be associated");
         }
         return jobService.createJob(job);
