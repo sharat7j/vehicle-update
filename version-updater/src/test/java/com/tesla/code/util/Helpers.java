@@ -2,6 +2,7 @@ package com.tesla.code.util;
 
 import com.tesla.code.beans.Job;
 import com.tesla.code.beans.JobStatus;
+import com.tesla.code.beans.RollOut;
 import com.tesla.code.utils.JobState;
 
 import java.time.Instant;
@@ -23,6 +24,14 @@ public class Helpers {
         status.setJobId("1");
         status.setState(JobState.CREATED);
         return status;
+    }
+
+    public static RollOut churnRollOut() {
+        RollOut rollOut = new RollOut();
+        Long curTime = Instant.now().getEpochSecond();
+        rollOut.setName(curTime.toString());
+        rollOut.setDescription("sample roll out");
+        return rollOut;
     }
 
 }

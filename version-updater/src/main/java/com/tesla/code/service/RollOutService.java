@@ -29,7 +29,10 @@ public class RollOutService {
         return rollOutRepository.findAll(pageable);
     }
 
-    public RollOut createRollOut(RollOut rollOut) throws UniquenessException {
+    public RollOut createRollOut(RollOut rollOut) throws UniquenessException, MissingDataException {
+        if(rollOut.getName() == null) {
+            throw new MissingDataException("Required attribute \'name\' is missing");
+        }
         rollOut.setDate_created(Instant.now().getEpochSecond());
         RollOut existingRollOut = rollOutRepository.nameExists(rollOut.getName());
         if(existingRollOut != null) {

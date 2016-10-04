@@ -29,9 +29,10 @@ public class RollOutController {
      * @param rollOut The roll out object serialized into a JSON on the post request.
      * @return The RollOut object confirming that its stored in the persistence store.
      * @throws UniquenessException Thrown if the roll out with a similar name already exists
+     * @throws MissingDataException Thrown if required attributes are missing from the JSON payload
      */
     @RequestMapping(value = "/rollOut", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public RollOut createRollOut(@RequestBody RollOut rollOut) throws UniquenessException {
+    public RollOut createRollOut(@RequestBody RollOut rollOut) throws UniquenessException, MissingDataException {
         return rollOutService.createRollOut(rollOut);
     }
 
