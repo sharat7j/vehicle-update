@@ -30,7 +30,7 @@ public class RollOutService {
     }
 
     public RollOut createRollOut(RollOut rollOut) throws UniquenessException, MissingDataException {
-        if(rollOut.getName() == null) {
+        if(rollOut == null || rollOut.getName() == null) {
             throw new MissingDataException("Required attribute \'name\' is missing");
         }
         rollOut.setDate_created(Instant.now().getEpochSecond());
@@ -38,8 +38,7 @@ public class RollOutService {
         if(existingRollOut != null) {
             throw new UniquenessException("Rollout with name " + rollOut.getName() + " already exists");
         }
-        rollOutRepository.save(rollOut);
-        return rollOut;
+        return rollOutRepository.save(rollOut);
     }
 
     public void deleteRollOut(String id) {

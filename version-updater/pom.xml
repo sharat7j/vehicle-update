@@ -32,6 +32,49 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>com.github.kongchen</groupId>
+                <artifactId>swagger-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <apiSources>
+                        <apiSource>
+                            <springmvc>true</springmvc>
+                            <locations>
+                                com.tesla.code.controller
+                            </locations>
+                            <basePath>/</basePath>
+                            <info>
+                                <title>Tesla Fleet Net API documentation</title>
+                                <version>v1</version>
+                                <description>
+                                    The tesla fleet net vehicle firmware version update service provides a management and
+                                    reporting platform to keep track of software updates to tesla vehicles. The updates are
+                                    grouped into roll outs with each roll out containing multiple jobs. For each job that updates
+                                    a particular vehicle type, the update can move between different states denoted by the notion
+                                    of a job status.
+                                    The APIs provided here will allow administrators to easily track updates to specific vehicles,
+                                    generate reports and drill down to information in multiple ways.
+                                </description>
+                                <contact>
+                                    <email>DL-ENG-V-UPDATE@tesla.com</email>
+                                    <name>Fleet Net</name>
+                                </contact>
+                            </info>
+                            <swaggerDirectory>${project.build.directory}/generated/</swaggerDirectory>
+                            <swaggerApiReader>com.wordnik.swagger.jaxrs.reader.DefaultJaxrsApiReader</swaggerApiReader>
+                        </apiSource>
+                    </apiSources>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -111,6 +154,12 @@
             <artifactId>hamcrest-core</artifactId>
             <version>1.3</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.2.2</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
