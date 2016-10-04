@@ -1,0 +1,466 @@
+{
+	"variables": [],
+	"info": {
+		"name": "tesla-code-challenge",
+		"_postman_id": "19523aa7-2ac7-0d9b-32de-58f0a9226ed7",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/v1/rollOut",
+			"request": {
+				"url": "http://localhost:8080/v1/rollOut",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-domain-id",
+						"value": "{{domain_id}}",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-customer-id",
+						"value": "{{customer_id}}",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"model 3 roll out\",\n\t\"description\": \"super awesome rollout\"\n}"
+				},
+				"description": "create a new roll out"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/v1/job",
+			"request": {
+				"url": "http://localhost:8080/v1/job",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-domain-id",
+						"value": "{{domain_id}}",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-customer-id",
+						"value": "{{customer_id}}",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"\"\n}"
+				},
+				"description": "add a new job to the rollout"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/v1/listJobs",
+			"request": {
+				"url": "http://localhost:8080/v1/listJobs",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-domain-id",
+						"value": "{{domain_id}}",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-customer-id",
+						"value": "{{customer_id}}",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"1\"\n}"
+				},
+				"description": "list all jobs"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/v1/listJobs?rollOutId=2",
+			"request": {
+				"url": "http://localhost:8080/v1/listJobs?rollOutId=2",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-domain-id",
+						"value": "{{domain_id}}",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-customer-id",
+						"value": "{{customer_id}}",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"1\"\n}"
+				},
+				"description": "list all jobs for a specific roll out id"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/v1/job?id=1",
+			"request": {
+				"url": "http://localhost:8080/v1/job?id=1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-domain-id",
+						"value": "{{domain_id}}",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-customer-id",
+						"value": "{{customer_id}}",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"1\"\n}"
+				},
+				"description": "Get details of a specific job"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/v1/cancelJob?id=1",
+			"request": {
+				"url": "http://localhost:8080/v1/cancelJob?id=1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-domain-id",
+						"value": "{{domain_id}}",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-customer-id",
+						"value": "{{customer_id}}",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"1\"\n}"
+				},
+				"description": "Cancel a specific job if it is in the downloading or created state "
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/v1/job?id=1",
+			"request": {
+				"url": "http://localhost:8080/v1/job?id=1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-domain-id",
+						"value": "{{domain_id}}",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-customer-id",
+						"value": "{{customer_id}}",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"1\"\n}"
+				},
+				"description": "deleting a specific job"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/v1/rollOuts",
+			"request": {
+				"url": "http://localhost:8080/v1/rollOuts",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-domain-id",
+						"value": "{{domain_id}}",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-customer-id",
+						"value": "{{customer_id}}",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"model 3 roll out\",\n\t\"description\": \"super awesome rollout\"\n}"
+				},
+				"description": "list all rollOuts"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/v1/statusList",
+			"request": {
+				"url": "http://localhost:8080/v1/statusList",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-domain-id",
+						"value": "{{domain_id}}",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-customer-id",
+						"value": "{{customer_id}}",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"2\"\n}"
+				},
+				"description": "list of job statuses in the system "
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/v1/statusList?rollOutId=1&jobId=1",
+			"request": {
+				"url": "http://localhost:8080/v1/statusList?rollOutId=1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-domain-id",
+						"value": "{{domain_id}}",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-customer-id",
+						"value": "{{customer_id}}",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"2\"\n}"
+				},
+				"description": "list of job statuses for a specific rollOut specific jobId"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/v1/status",
+			"request": {
+				"url": "http://localhost:8080/v1/status?",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-domain-id",
+						"value": "{{domain_id}}",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-customer-id",
+						"value": "{{customer_id}}",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"state\": \"CREATED\",\n\t\"jobId\": \"1\"\n}"
+				},
+				"description": "creating a new job status "
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/v1/rollOutReport",
+			"request": {
+				"url": "http://localhost:8080/v1/rollOutReport?id=1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-domain-id",
+						"value": "{{domain_id}}",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-customer-id",
+						"value": "{{customer_id}}",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"1\"\n}"
+				},
+				"description": "get report summary for a roll out"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/v1/rollOut?id=1",
+			"request": {
+				"url": "http://localhost:8080/v1/rollOut?id=1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-domain-id",
+						"value": "{{domain_id}}",
+						"description": ""
+					},
+					{
+						"key": "x-epmp-customer-id",
+						"value": "{{customer_id}}",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"1\"\n}"
+				},
+				"description": "delete roll out"
+			},
+			"response": []
+		}
+	]
+}
