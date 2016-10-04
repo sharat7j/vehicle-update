@@ -1,7 +1,7 @@
-# vehicle-update
-service to send and manage vehicle update workflows
+# Vehicle Software Management Platform
+Service to send and manage vehicle update workflows
 
-# What
+## What
 
 A spring boot application that provides APIs to manage large firmware update workflows for connected vehicles.
 This service uses an In-memory database which can be easily swapped out to a real persistent layer by adding the jdbc
@@ -9,7 +9,7 @@ properties to the spring boot properties files.
 
 The service supports most of the CRUD operations and allows for managing and tracking status updates for specific vehicles/rollOuts
 
-Tech Stack:
+### Tech Stack:
 - Spring boot
 - Spring JPA in memory database
 - Hibernate based ORM
@@ -17,7 +17,7 @@ Tech Stack:
 - Swagger API documentation
 - Dockerized build/deployment
 
-# Requirements
+## Requirements
 
 You will need
 - maven to build this project to build the jar.
@@ -25,15 +25,15 @@ You will need
 - Postman to easily download and test the integration test suite
 
 
-# API docs
+## API docs
 
 The API documentation is powered by swagger and can be located at /target/generated/swagger.json
 
-# Unit test coverage report
+## Unit test coverage report
 
 The Jacoco reports can be accessed at /target/site/jacoco/index.html
 
-# Integration test suite
+## Integration test suite
 
 For integration testing a postman collection is provided. Please use vehicle-update.postman_collection file to import the
 collection into postman and run the collection.
