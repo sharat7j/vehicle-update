@@ -14,8 +14,10 @@ public class Helpers {
         Job job = new Job();
         job.setName("Job Number :" + curTime);
         job.setRollOutId("1");
+        job.setRollOut(churnRollOut());
         job.setSoftwareVersion(curTime.toString());
         job.setVehicleId("Vehicle: " + curTime % 1000);
+        job.setId("a" + curTime);
         return job;
     }
 
@@ -28,6 +30,7 @@ public class Helpers {
 
     public static RollOut churnRollOut() {
         RollOut rollOut = new RollOut();
+        rollOut.setId("id" + Instant.now().getEpochSecond());
         Long curTime = Instant.now().getEpochSecond();
         rollOut.setName(curTime.toString());
         rollOut.setDescription("sample roll out");

@@ -32,6 +32,7 @@ public class JobStatus {
     private String jobId;
 
     public JobStatus() {
+        this.timestamp = Instant.now().getEpochSecond();
 
     }
     public JobStatus(JobState state, Job job) {
