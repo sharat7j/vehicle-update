@@ -24,6 +24,7 @@ public class Helpers {
     public static JobStatus churnJobStatus() {
         JobStatus status = new JobStatus();
         status.setJobId("1");
+        status.setJob(churnJob());
         status.setState(JobState.CREATED);
         return status;
     }

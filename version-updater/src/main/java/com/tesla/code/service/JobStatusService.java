@@ -36,6 +36,7 @@ public class JobStatusService {
         if(job == null) {
             throw new MissingDataException("Job with identifier " + status.getJobId() + " not found");
         }
+        // there will always be atleast one Job status for a  given job.
         JobStatus currentStatus = jobRepository.getJobStatusList(job.getId()).get(0);
         // Assumption: only update with new status if its not the same as the current status.
         // kind of unclear here what the product expectation should be as it really depends on the broader product context
