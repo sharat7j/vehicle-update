@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ControllerExceptionHandler {
 
     public ControllerExceptionHandler() {
-        System.out.println("&&*******defined**(&(*(*");
+
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
