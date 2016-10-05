@@ -1,4 +1,4 @@
-FROM alpine:3.3
+FROM frolvlad/alpine-oraclejdk8:slim
 
 ADD version-updater/target/version-updater-1.0-SNAPSHOT.jar /app.jar
 RUN sh -c 'touch /app.jar'
