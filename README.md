@@ -36,6 +36,7 @@ To deploy we have multiple ways:
    ```
    The service would be deployed at localhost:80
 - Jar: The jar can be built by using maven. Once built we can run the jar as indicated below
+
    ```
    $> mvn clean install
    $> java -jar version-updater/target/version-updater-1.0-SNAPSHOT.jar
