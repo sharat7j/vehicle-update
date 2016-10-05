@@ -10,7 +10,6 @@ public class RollOutReport {
 
     private Map<JobState, Integer> currentState;
     private Long totalJobCount;
-    private Long totalJobStatusCount;
 
     public Map<JobState, Integer> getCurrentState() {
         return currentState;
@@ -18,14 +17,6 @@ public class RollOutReport {
 
     public void setCurrentState(Map<JobState, Integer> currentState) {
         this.currentState = currentState;
-    }
-
-    public Long getTotalJobStatusCount() {
-        return totalJobStatusCount;
-    }
-
-    public void setTotalJobStatusCount(Long totalJobStatusCount) {
-        this.totalJobStatusCount = totalJobStatusCount;
     }
 
     public Long getTotalJobCount() {

@@ -1,6 +1,7 @@
 package com.tesla.code.service;
 
 import com.tesla.code.beans.JobStatus;
+import com.tesla.code.exceptions.InvalidDataException;
 import com.tesla.code.exceptions.MissingDataException;
 import com.tesla.code.repository.JobRepository;
 import com.tesla.code.repository.JobStatusRepository;
@@ -63,30 +64,56 @@ public class JobStatusServiceTest {
 
     }
 
-    @Test
-    public void testCreateJobStatusSameState() throws Exception, MissingDataException {
+    @Test(expected = InvalidDataException.class)
+    public void testJobIsCancelledState() throws Exception {
         JobStatus status = new JobStatus();
         status.setJobId("1");
-        status.setState(JobState.CREATED);
-        List<JobStatus> jobStatusList = new ArrayList<>();
-        jobStatusList.add(churnJobStatus());
+        status.setState(JobState.CANCELLED);
         when(jobRepository.findOne(any(String.class))).thenReturn(churnJob());
-        when(jobRepository.getJobStatusList(any(String.class))).thenReturn(jobStatusList);
+        jobStatusService.createJobStatus(status);
+
+    }
+
+    @Test(expected = InvalidDataException.class)
+    public void testJobIsInUnknownState() throws Exception {
+        JobStatus status1 = new JobStatus();
+        status1.setJobId("1");
+        status1.setState(JobState.UNKNOWN);
+        when(jobRepository.findOne(any(String.class))).thenReturn(churnJob());
+        jobStatusService.createJobStatus(status1);
+    }
+
+    @Test(expected = InvalidDataException.class)
+    public void testNewJobStatusNotLogical() throws Exception {
+        JobStatus status = new JobStatus();
+        status.setJobId("1");
+        // bypassing the DOWNLOADING step
+        status.setState(JobState.INSTALLING);
+        when(jobRepository.findOne(any(String.class))).thenReturn(churnJob());
+        // set up existing current job status for the job
+        List<JobStatus> jobStatuses = new ArrayList<>();
+        jobStatuses.add(churnJobStatus());
+        when(jobRepository.getJobStatusList(any(String.class))).thenReturn(jobStatuses);
+        jobStatusService.createJobStatus(status);
+    }
+
+    @Test
+    public void testNewJobValid() throws Exception {
+        JobStatus status = new JobStatus();
+        status.setJobId("1");
+        // bypassing the DOWNLOADING step
+        status.setState(JobState.DOWNLOADING);
+        when(jobRepository.findOne(any(String.class))).thenReturn(churnJob());
+        // set up existing current job status for the job
+        List<JobStatus> jobStatuses = new ArrayList<>();
+        jobStatuses.add(churnJobStatus());
+        when(jobRepository.getJobStatusList(any(String.class))).thenReturn(jobStatuses);
+        // override the save call here to ensure it returns the new status as this is what hibernate would do.
+        when(jobStatusRepository.save(any(JobStatus.class))).thenReturn(status);
         JobStatus result = jobStatusService.createJobStatus(status);
         assertNotNull(result);
+        assertEquals(result.getId(), status.getId());
         assertEquals(result.getState(), status.getState());
-        // the timestamp must be update to the latest
-        assertEquals(result.getTimestamp(), status.getTimestamp());
-
-        jobStatusList = new ArrayList<>();
-        JobStatus currentState = churnJobStatus();
-        currentState.setState(JobState.DOWNLOADING);
-        jobStatusList.add(currentState);
-        when(jobRepository.getJobStatusList(any(String.class))).thenReturn(jobStatusList);
-        JobStatus result1 = jobStatusService.createJobStatus(status);
-        assertNotNull(result1);
-        assertEquals(result1.getState(), status.getState());
-        assertEquals(result1.getTimestamp(), status.getTimestamp());
     }
 
     @Test

@@ -27,4 +27,10 @@ public enum JobState {
         }
         return JobState.UNKNOWN;
     }
+
+    public JobState getNextState() {
+        int index = this.ordinal();
+        JobState[] states = JobState.values();
+        return states[(index + 1) % JobState.values().length];
+    }
 }

@@ -1,9 +1,11 @@
 package com.tesla.code.service;
 
+import com.tesla.code.beans.Job;
 import com.tesla.code.beans.RollOut;
 import com.tesla.code.beans.RollOutReport;
 import com.tesla.code.exceptions.MissingDataException;
 import com.tesla.code.exceptions.UniquenessException;
+import com.tesla.code.repository.JobRepository;
 import com.tesla.code.repository.RollOutRepository;
 import com.tesla.code.utils.JobState;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,16 +15,19 @@ import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
 public class RollOutService {
 
     private RollOutRepository rollOutRepository;
+    private JobRepository jobRepository;
 
     @Autowired
-    public RollOutService(RollOutRepository repository) {
+    public RollOutService(RollOutRepository repository, JobRepository jobRepository) {
         this.rollOutRepository = repository;
+        this.jobRepository = jobRepository;
     }
 
     public Page<RollOut> listRollOuts(Pageable pageable) {
@@ -52,11 +57,16 @@ public class RollOutService {
         }
         RollOutReport report = new RollOutReport();
         report.setTotalJobCount(rollOutRepository.getJobCount(id));
-        report.setTotalJobStatusCount(rollOutRepository.getJobStatusCount(id));
+        List<Job> jobList = rollOutRepository.getJobsForRollOut(id);
         Map<JobState, Integer> jobStateCountMap = new HashMap<>();
-        for(JobState state: JobState.values()) {
-            // get count for each state in the roll up
-            jobStateCountMap.put(state, rollOutRepository.getStateCount(state, id));
+        // get current status for each job and maintain/update the count across the roll out
+        for(Job job: jobList) {
+            JobState state = jobRepository.getJobStatusList(job.getId()).get(0).getState();
+            if(jobStateCountMap.containsKey(state)) {
+                jobStateCountMap.put(state, jobStateCountMap.get(state) + 1);
+            } else {
+                jobStateCountMap.put(state, 1);
+            }
         }
         report.setCurrentState(jobStateCountMap);
         return report;

@@ -2,9 +2,11 @@ package com.tesla.code.service;
 
 import com.tesla.code.beans.Job;
 import com.tesla.code.beans.JobStatus;
+import com.tesla.code.exceptions.InvalidDataException;
 import com.tesla.code.exceptions.MissingDataException;
 import com.tesla.code.repository.JobRepository;
 import com.tesla.code.repository.JobStatusRepository;
+import com.tesla.code.utils.JobState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.domain.Page;
@@ -25,7 +27,7 @@ public class JobStatusService {
         this.jobRepository = jobRepository;
     }
 
-    public JobStatus createJobStatus(JobStatus status) throws MissingDataException {
+    public JobStatus createJobStatus(JobStatus status) throws MissingDataException, InvalidDataException {
         if(status == null) {
             throw new MissingDataException("Status object received was null. Cannot create new Job Status");
         }
@@ -36,14 +38,14 @@ public class JobStatusService {
         if(job == null) {
             throw new MissingDataException("Job with identifier " + status.getJobId() + " not found");
         }
+        if(status.getState().equals(JobState.CANCELLED) || status.getState().equals(JobState.UNKNOWN)) {
+            throw new InvalidDataException("Invalid Job State found in request. Must be one of CREATED, DOWNLOADING, INSTALLING, SUCCEEDED or FAILED");
+        }
         // there will always be atleast one Job status for a  given job.
         JobStatus currentStatus = jobRepository.getJobStatusList(job.getId()).get(0);
-        // Assumption: only update with new status if its not the same as the current status.
-        // kind of unclear here what the product expectation should be as it really depends on the broader product context
-        if(currentStatus.getState() == status.getState()) {
-            // just update the timestamp
-            currentStatus.setTimestamp(Instant.now().getEpochSecond());
-            return jobStatusRepository.save(currentStatus);
+        // Accept only if the incoming state is a logical next step from the existing state the Job is in.
+        if(!currentStatus.getState().getNextState().equals(status.getState())) {
+            throw new InvalidDataException("New Job State does not logically follow the existing state of the Job. Existing state: " + currentStatus.getState());
         } else {
             status.setJob(job);
             status.setTimestamp(Instant.now().getEpochSecond());

@@ -25,4 +25,10 @@ public class ControllerExceptionHandler {
     public String handleMissingDataException(MissingDataException e) {
         return e.getMessage();
     }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(InvalidDataException.class)
+    public String handleInvalidDataException(InvalidDataException e) {
+        return e.getMessage();
+    }
 }

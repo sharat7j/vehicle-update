@@ -4,6 +4,7 @@ import com.tesla.code.beans.RollOut;
 import com.tesla.code.beans.RollOutReport;
 import com.tesla.code.exceptions.MissingDataException;
 import com.tesla.code.exceptions.UniquenessException;
+import com.tesla.code.repository.JobRepository;
 import com.tesla.code.repository.RollOutRepository;
 import com.tesla.code.utils.JobState;
 import org.junit.Before;
@@ -15,6 +16,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.jmx.export.annotation.ManagedOperation;
 
 import java.util.Collections;
 import java.util.Map;
@@ -32,11 +34,14 @@ public class RollOutServiceTest {
     @Mock
     RollOutRepository rollOutRepository;
 
+    @Mock
+    JobRepository jobRepository;
+
     @Rule
     public ExpectedException exception = ExpectedException.none();
 
     @InjectMocks
-    RollOutService rollOutService = new RollOutService(rollOutRepository);
+    RollOutService rollOutService = new RollOutService(rollOutRepository, jobRepository);
 
     @Before
     public void setUp() throws Exception {
@@ -87,12 +92,10 @@ public class RollOutServiceTest {
     public void testGenerateReport() throws Exception, MissingDataException {
         when(rollOutRepository.findOne(any(String.class))).thenReturn(churnRollOut());
         when(rollOutRepository.getJobCount(any(String.class))).thenReturn(2L);
-        when(rollOutRepository.getJobStatusCount(any(String.class))).thenReturn(4L);
         when(rollOutRepository.getStateCount(any(JobState.class), any(String.class))).thenReturn(1);
         RollOutReport report = rollOutService.generateReport("1");
         assertNotNull(report);
         assertTrue(report.getTotalJobCount() == 2L);
-        assertTrue(report.getTotalJobStatusCount() == 4L);
         for(Map.Entry<JobState, Integer> entry: report.getCurrentState().entrySet()) {
             assertTrue(entry.getValue() == 1);
         }
