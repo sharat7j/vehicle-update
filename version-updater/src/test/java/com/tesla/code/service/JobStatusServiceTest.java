@@ -116,6 +116,20 @@ public class JobStatusServiceTest {
         assertEquals(result.getState(), status.getState());
     }
 
+    @Test(expected = InvalidDataException.class)
+    public void testNewJobStatusUpdatingFinishedState() throws MissingDataException, InvalidDataException {
+        JobStatus status = new JobStatus();
+        status.setJobId("1");
+        // bypassing the DOWNLOADING step
+        status.setState(JobState.FAILED);
+        when(jobRepository.findOne(any(String.class))).thenReturn(churnJob());
+        // set up existing current job status for the job
+        List<JobStatus> jobStatuses = new ArrayList<>();
+        jobStatuses.add(status);
+        when(jobRepository.getJobStatusList(any(String.class))).thenReturn(jobStatuses);
+        jobStatusService.createJobStatus(status);
+    }
+
     @Test
     public void testListStatus() throws Exception {
         List<JobStatus> jobStatusList = new ArrayList<>();

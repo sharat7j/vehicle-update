@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.Collections;
 
 @Service
 public class JobStatusService {
@@ -28,23 +29,25 @@ public class JobStatusService {
     }
 
     public JobStatus createJobStatus(JobStatus status) throws MissingDataException, InvalidDataException {
-        if(status == null) {
+        if (status == null) {
             throw new MissingDataException("Status object received was null. Cannot create new Job Status");
         }
-        if(status.getJobId() == null) {
+        if (status.getJobId() == null) {
             throw new MissingDataException("Missing jobId in the JSON to create JobStatus. This is a required field");
         }
         Job job = jobRepository.findOne(status.getJobId());
-        if(job == null) {
+        if (job == null) {
             throw new MissingDataException("Job with identifier " + status.getJobId() + " not found");
         }
-        if(status.getState().equals(JobState.CANCELLED) || status.getState().equals(JobState.UNKNOWN)) {
+        if (status.getState().equals(JobState.CANCELLED) || status.getState().equals(JobState.UNKNOWN)) {
             throw new InvalidDataException("Invalid Job State found in request. Must be one of CREATED, DOWNLOADING, INSTALLING, SUCCEEDED or FAILED");
         }
         // there will always be atleast one Job status for a  given job.
         JobStatus currentStatus = jobRepository.getJobStatusList(job.getId()).get(0);
-        // Accept only if the incoming state is a logical next step from the existing state the Job is in.
-        if(!currentStatus.getState().getNextState().equals(status.getState())) {
+        if (JobState.decisionStates().contains(currentStatus.getState())) {
+            throw new InvalidDataException("Current job has already reached completion. State: " + currentStatus.getState());
+        } else if (!currentStatus.getState().getNextState().equals(status.getState())) {
+            // Accept only if the incoming state is a logical next step from the existing state the Job is in.
             throw new InvalidDataException("New Job State does not logically follow the existing state of the Job. Existing state: " + currentStatus.getState());
         } else {
             status.setJob(job);
@@ -59,13 +62,14 @@ public class JobStatusService {
             return jobStatus;
         }
     }
+
     public Page<JobStatus> listStatus(Pageable pageable, String rollOutId, String jobId) {
-        if(rollOutId!=null && jobId != null) {
+        if (rollOutId != null && jobId != null) {
             return jobStatusRepository.getStatusListForRolloutAndJob(pageable, rollOutId, jobId).map(new JobStatusConverter());
-        } else if(rollOutId != null) {
+        } else if (rollOutId != null) {
             return jobStatusRepository.getStatusListForRollOut(pageable, rollOutId).map(new JobStatusConverter());
 
-        } else if(jobId != null) {
+        } else if (jobId != null) {
             return jobStatusRepository.getStatusListForJob(pageable, jobId).map(new JobStatusConverter());
 
         } else {

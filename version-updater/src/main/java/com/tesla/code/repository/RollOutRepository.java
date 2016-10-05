@@ -20,9 +20,6 @@ public interface RollOutRepository extends PagingAndSortingRepository<RollOut, S
     @Query(value = "delete from RollOut u where u.id = :id")
     void deleteRollOut(@Param("id") String id);
 
-    @Query(value = "select count(u) from JobStatus u where u.job.rollOut.id = :id")
-    Long getJobStatusCount(@Param("id") String id);
-
     @Query(value = "select count(u) from Job u where u.rollOut.id = :id")
     Long getJobCount(@Param("id") String id);
 
