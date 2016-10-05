@@ -29,19 +29,21 @@ public class JobStatusController {
      * Create a new Job Status that is associate to a specific job. The job Id is added in the serialized JSON object
      * of JobStatus
      *
-     * @param jobStatusRequest The job status request serialized JSON that containing the Job Id to which this status is associated
+     * @param jobStatusRequest The job status request serialized JSON that containing the Job Id to which this status
+     *                         is associated. The Status to be update MUST be in a logical sequence with respect
+     *                         to the current status of the Job.
      * @return The JobStatus object as stored with the unique identifier to easily retrieve this later.
      * @throws MissingDataException thrown if the job status JSON is null or if the Job Id is not present.
      * @throws InvalidDataException Thrown if the job state update does not follow a logical path i.e. can only go from CREATED to DOWNLOADING and not directly to INSTALLING from CREATED.
      */
-    @ApiOperation(value = "Create a new Job Status", notes = "Creates a new Job status for a job if its not already " +
-            "in the same state as what is in the update")
+    @ApiOperation(value = "Create a new Job Status", notes = "Creates a new Job status for a Job provided this state " +
+            "follows the logical sequence with respect to the current state of the Job")
     @RequestMapping(value = "/status", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Success", response = JobStatus.class),
             @ApiResponse(code = 400, message = "Bad Request", response = String.class)
     })
-    public JobStatus createJobStatus(@ApiParam(value = "The JobStatus JSON message")
+    public JobStatus createJobStatus(@ApiParam(value = "The Job Status request JSON")
                                      @RequestBody JobStatusRequest jobStatusRequest) throws MissingDataException, InvalidDataException {
         return jobStatusService.createJobStatus(JobStatus.getJobStatusFromRequest(jobStatusRequest));
     }

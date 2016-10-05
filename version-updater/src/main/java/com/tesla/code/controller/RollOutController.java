@@ -42,7 +42,7 @@ public class RollOutController {
             @ApiResponse(code = 400, message = "Bad request if either a roll out already exists with the same name or " +
                     "if the name attribute is empty", response = String.class)
     })
-    public RollOut createRollOut(@ApiParam(value = "RollOut payload as JSON for creation")
+    public RollOut createRollOut(@ApiParam(value = "RollOutRequest payload as JSON for creation of a roll out")
                                  @RequestBody RollOutRequest rollOutRequest) throws UniquenessException, MissingDataException {
         return rollOutService.createRollOut(RollOut.getRollOutFromRequest(rollOutRequest));
     }
