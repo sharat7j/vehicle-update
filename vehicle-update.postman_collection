@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "tesla-code-challenge",
-		"_postman_id": "19523aa7-2ac7-0d9b-32de-58f0a9226ed7",
+		"_postman_id": "e96d6fb1-60b7-103a-0098-d6e1290c3a6e",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -16,21 +16,6 @@
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
 						"description": ""
 					}
 				],
@@ -52,26 +37,11 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
-						"description": ""
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"\"\n}"
+					"raw": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"1\"\n}"
 				},
 				"description": "add a new job to the rollout"
 			},
@@ -86,21 +56,6 @@
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
 						"description": ""
 					}
 				],
@@ -122,21 +77,6 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
-						"description": ""
 					}
 				],
 				"body": {
@@ -156,21 +96,6 @@
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
 						"description": ""
 					}
 				],
@@ -192,21 +117,6 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
-						"description": ""
 					}
 				],
 				"body": {
@@ -226,21 +136,6 @@
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
 						"description": ""
 					}
 				],
@@ -262,21 +157,6 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
-						"description": ""
 					}
 				],
 				"body": {
@@ -296,21 +176,6 @@
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
 						"description": ""
 					}
 				],
@@ -332,21 +197,6 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
-						"description": ""
 					}
 				],
 				"body": {
@@ -366,21 +216,6 @@
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
 						"description": ""
 					}
 				],
@@ -402,21 +237,6 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
-						"description": ""
 					}
 				],
 				"body": {
@@ -436,21 +256,6 @@
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
 						"description": ""
 					}
 				],
