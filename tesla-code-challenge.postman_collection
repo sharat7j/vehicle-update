@@ -17,21 +17,6 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
-						"description": ""
 					}
 				],
 				"body": {
@@ -51,21 +36,6 @@
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
 						"description": ""
 					}
 				],
@@ -87,21 +57,6 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
-						"description": ""
 					}
 				],
 				"body": {
@@ -121,21 +76,6 @@
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
 						"description": ""
 					}
 				],
@@ -157,21 +97,6 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
-						"description": ""
 					}
 				],
 				"body": {
@@ -191,21 +116,6 @@
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
 						"description": ""
 					}
 				],
@@ -227,21 +137,6 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
-						"description": ""
 					}
 				],
 				"body": {
@@ -261,21 +156,6 @@
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
 						"description": ""
 					}
 				],
@@ -297,21 +177,6 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
-						"description": ""
 					}
 				],
 				"body": {
@@ -331,21 +196,6 @@
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
 						"description": ""
 					}
 				],
@@ -367,21 +217,6 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
-						"description": ""
 					}
 				],
 				"body": {
@@ -402,21 +237,6 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
-						"description": ""
 					}
 				],
 				"body": {
@@ -436,21 +256,6 @@
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-domain-id",
-						"value": "{{domain_id}}",
-						"description": ""
-					},
-					{
-						"key": "x-epmp-customer-id",
-						"value": "{{customer_id}}",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}",
 						"description": ""
 					}
 				],
