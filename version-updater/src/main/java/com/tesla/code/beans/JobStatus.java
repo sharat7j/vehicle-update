@@ -2,6 +2,7 @@ package com.tesla.code.beans;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.tesla.code.beans.request.JobStatusRequest;
 import com.tesla.code.utils.JobState;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -79,5 +80,15 @@ public class JobStatus {
 
     public void setJobId(String jobId) {
         this.jobId = jobId;
+    }
+
+    public static JobStatus getJobStatusFromRequest(JobStatusRequest jobStatusRequest) {
+        if(jobStatusRequest == null) {
+            return null;
+        }
+        JobStatus status = new JobStatus();
+        status.setState(jobStatusRequest.getState());
+        status.setJobId(jobStatusRequest.getJobId());
+        return status;
     }
 }

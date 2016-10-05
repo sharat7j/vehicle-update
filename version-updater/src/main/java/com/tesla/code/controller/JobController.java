@@ -2,6 +2,7 @@ package com.tesla.code.controller;
 
 import com.tesla.code.beans.Job;
 import com.tesla.code.beans.JobStatus;
+import com.tesla.code.beans.request.JobRequest;
 import com.tesla.code.exceptions.MissingDataException;
 import com.tesla.code.exceptions.UniquenessException;
 import com.tesla.code.service.JobService;
@@ -31,7 +32,7 @@ public class JobController {
     /**
      * Interface to create a new Job associated to a roll out.
      *
-     * @param job The serialized version of the Job entity containing the information for the job.
+     * @param jobRequest The job request JSON containing the information for the job.
      * @return The serialized version of the Job object as received from the DB.
      * @throws MissingDataException Thrown if the required data is not available to do the association to a roll out
      * @throws UniquenessException  Thrown if the job is a duplicate of an existing job with the same name.
@@ -43,11 +44,11 @@ public class JobController {
             @ApiResponse(code = 200, message = "Success", response = Job.class),
             @ApiResponse(code = 400, message = "Bad Request", response = String.class)
     })
-    public Job createJob(@ApiParam(value = "The serialized Job JSON") @RequestBody Job job) throws MissingDataException, UniquenessException {
-        if (job == null || job.getRollOutId() == null) {
+    public Job createJob(@ApiParam(value = "The serialized Job JSON") @RequestBody JobRequest jobRequest) throws MissingDataException, UniquenessException {
+        if (jobRequest == null || jobRequest.getRollOutId() == null) {
             throw new MissingDataException("JSON must contain the Roll Out ID to which this job is to be associated");
         }
-        return jobService.createJob(job);
+        return jobService.createJob(Job.getJobFromRequest(jobRequest));
     }
 
     /**

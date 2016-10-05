@@ -1,0 +1,1161 @@
+{
+	"id": "fdb00683-4609-c9cd-bd8a-9405747e67dc",
+	"name": "tesla-code-challenge",
+	"allTests": [],
+	"timestamp": 1475631204412,
+	"collection_id": "e96d6fb1-60b7-103a-0098-d6e1290c3a6e",
+	"folder_id": 0,
+	"target_type": "collection",
+	"environment_id": "ae7e5721-59d0-fab2-d9e3-a2e40c4cff23",
+	"data": [],
+	"delay": 0,
+	"count": 1,
+	"collection": {
+		"id": "e96d6fb1-60b7-103a-0098-d6e1290c3a6e",
+		"name": "tesla-code-challenge",
+		"description": "",
+		"order": [
+			"57aa206c-95a4-4fe9-0938-01ace3a67f69",
+			"2e3377e3-e903-4c10-4c64-0654a47ea588",
+			"de8abdde-0825-9a55-22bf-8a31213d2bef",
+			"692f5a4b-66be-72b7-1a23-01a0cec401eb",
+			"73a3fc73-2605-eef9-aa6a-a3adae75a943",
+			"ab7118c6-7565-8641-a314-7106cda47af6",
+			"c44e4641-79fc-872d-b20b-dfbd56e14895",
+			"315c8d11-525f-5b73-8d53-c6a09101c7c9",
+			"135dd412-67a0-1d4e-dd91-8f66ac28708d",
+			"144554d7-f134-b3db-6ec5-b8929900d83f",
+			"4c843649-10d4-f656-0351-93eacaeeb2c4",
+			"6bec0f96-03bd-8224-223e-a6ec094214a8",
+			"6feb95bf-8431-d135-8a4e-10f14894600a"
+		],
+		"folders": [],
+		"requests": [
+			{
+				"id": "135dd412-67a0-1d4e-dd91-8f66ac28708d",
+				"headers": "Content-Type: application/json\n",
+				"url": "http://localhost:8080/v1/statusList",
+				"preRequestScript": null,
+				"pathVariables": {},
+				"method": "GET",
+				"data": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"2\"\n}",
+				"dataMode": "raw",
+				"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+				"currentHelper": "normal",
+				"helperAttributes": {},
+				"time": 1475631163002,
+				"name": "http://localhost:8080/v1/statusList",
+				"description": "list of job statuses in the system ",
+				"collectionId": "e96d6fb1-60b7-103a-0098-d6e1290c3a6e",
+				"responses": []
+			},
+			{
+				"id": "144554d7-f134-b3db-6ec5-b8929900d83f",
+				"headers": "Content-Type: application/json\n",
+				"url": "http://localhost:8080/v1/statusList?rollOutId=1",
+				"preRequestScript": null,
+				"pathVariables": {},
+				"method": "GET",
+				"data": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"2\"\n}",
+				"dataMode": "raw",
+				"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+				"currentHelper": "normal",
+				"helperAttributes": {},
+				"time": 1475631168089,
+				"name": "http://localhost:8080/v1/statusList?rollOutId=1&jobId=1",
+				"description": "list of job statuses for a specific rollOut specific jobId",
+				"collectionId": "e96d6fb1-60b7-103a-0098-d6e1290c3a6e",
+				"responses": []
+			},
+			{
+				"id": "2e3377e3-e903-4c10-4c64-0654a47ea588",
+				"headers": "Content-Type: application/json\n",
+				"url": "http://localhost:8080/v1/job",
+				"preRequestScript": null,
+				"pathVariables": {},
+				"method": "POST",
+				"data": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"1\"\n}",
+				"dataMode": "raw",
+				"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+				"currentHelper": "normal",
+				"helperAttributes": {},
+				"time": 1475631124591,
+				"name": "http://localhost:8080/v1/job",
+				"description": "add a new job to the rollout",
+				"collectionId": "e96d6fb1-60b7-103a-0098-d6e1290c3a6e",
+				"responses": []
+			},
+			{
+				"id": "315c8d11-525f-5b73-8d53-c6a09101c7c9",
+				"headers": "Content-Type: application/json\n",
+				"url": "http://localhost:8080/v1/rollOuts",
+				"preRequestScript": null,
+				"pathVariables": {},
+				"method": "GET",
+				"data": "{\n\t\"name\": \"model 3 roll out\",\n\t\"description\": \"super awesome rollout\"\n}",
+				"dataMode": "raw",
+				"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+				"currentHelper": "normal",
+				"helperAttributes": {},
+				"time": 1475631155812,
+				"name": "http://localhost:8080/v1/rollOuts",
+				"description": "list all rollOuts",
+				"collectionId": "e96d6fb1-60b7-103a-0098-d6e1290c3a6e",
+				"responses": []
+			},
+			{
+				"id": "4c843649-10d4-f656-0351-93eacaeeb2c4",
+				"headers": "Content-Type: application/json\n",
+				"url": "http://localhost:8080/v1/status?",
+				"preRequestScript": null,
+				"pathVariables": {},
+				"method": "POST",
+				"data": "{\n\t\"state\": \"CREATED\",\n\t\"jobId\": \"1\"\n}",
+				"dataMode": "raw",
+				"tests": "tests[\"Status code is 200\"] = responseCode.code === 400;",
+				"currentHelper": "normal",
+				"helperAttributes": {},
+				"time": 1475631178307,
+				"name": "http://localhost:8080/v1/status",
+				"description": "creating a new job status ",
+				"collectionId": "e96d6fb1-60b7-103a-0098-d6e1290c3a6e",
+				"responses": []
+			},
+			{
+				"id": "57aa206c-95a4-4fe9-0938-01ace3a67f69",
+				"headers": "Content-Type: application/json\n",
+				"url": "http://localhost:8080/v1/rollOut",
+				"preRequestScript": null,
+				"pathVariables": {},
+				"method": "POST",
+				"data": "{\n\t\"name\": \"model 3 roll out\",\n\t\"description\": \"super awesome rollout\"\n}",
+				"dataMode": "raw",
+				"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+				"currentHelper": "normal",
+				"helperAttributes": {},
+				"time": 1475631119836,
+				"name": "http://localhost:8080/v1/rollOut",
+				"description": "create a new roll out",
+				"collectionId": "e96d6fb1-60b7-103a-0098-d6e1290c3a6e",
+				"responses": []
+			},
+			{
+				"id": "692f5a4b-66be-72b7-1a23-01a0cec401eb",
+				"headers": "Content-Type: application/json\n",
+				"url": "http://localhost:8080/v1/listJobs?rollOutId=1",
+				"preRequestScript": null,
+				"pathVariables": {},
+				"method": "GET",
+				"data": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"1\"\n}",
+				"dataMode": "raw",
+				"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+				"currentHelper": "normal",
+				"helperAttributes": {},
+				"time": 1475631138882,
+				"name": "http://localhost:8080/v1/listJobs?rollOutId=2",
+				"description": "list all jobs for a specific roll out id",
+				"collectionId": "e96d6fb1-60b7-103a-0098-d6e1290c3a6e",
+				"responses": []
+			},
+			{
+				"id": "6bec0f96-03bd-8224-223e-a6ec094214a8",
+				"headers": "Content-Type: application/json\n",
+				"url": "http://localhost:8080/v1/rollOutReport?id=1",
+				"preRequestScript": null,
+				"pathVariables": {},
+				"method": "GET",
+				"data": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"1\"\n}",
+				"dataMode": "raw",
+				"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+				"currentHelper": "normal",
+				"helperAttributes": {},
+				"time": 1475631182701,
+				"name": "http://localhost:8080/v1/rollOutReport",
+				"description": "get report summary for a roll out",
+				"collectionId": "e96d6fb1-60b7-103a-0098-d6e1290c3a6e",
+				"responses": []
+			},
+			{
+				"id": "6feb95bf-8431-d135-8a4e-10f14894600a",
+				"headers": "Content-Type: application/json\n",
+				"url": "http://localhost:8080/v1/rollOut?id=1",
+				"preRequestScript": null,
+				"pathVariables": {},
+				"method": "DELETE",
+				"data": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"1\"\n}",
+				"dataMode": "raw",
+				"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+				"currentHelper": "normal",
+				"helperAttributes": {},
+				"time": 1475631186610,
+				"name": "http://localhost:8080/v1/rollOut?id=1",
+				"description": "delete roll out",
+				"collectionId": "e96d6fb1-60b7-103a-0098-d6e1290c3a6e",
+				"responses": []
+			},
+			{
+				"id": "73a3fc73-2605-eef9-aa6a-a3adae75a943",
+				"headers": "Content-Type: application/json\n",
+				"url": "http://localhost:8080/v1/job?id=1",
+				"preRequestScript": null,
+				"pathVariables": {},
+				"method": "GET",
+				"data": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"1\"\n}",
+				"dataMode": "raw",
+				"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+				"currentHelper": "normal",
+				"helperAttributes": {},
+				"time": 1475631142904,
+				"name": "http://localhost:8080/v1/job?id=1",
+				"description": "Get details of a specific job",
+				"collectionId": "e96d6fb1-60b7-103a-0098-d6e1290c3a6e",
+				"responses": []
+			},
+			{
+				"id": "ab7118c6-7565-8641-a314-7106cda47af6",
+				"headers": "Content-Type: application/json\n",
+				"url": "http://localhost:8080/v1/cancelJob?id=1",
+				"preRequestScript": null,
+				"pathVariables": {},
+				"method": "GET",
+				"data": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"1\"\n}",
+				"dataMode": "raw",
+				"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+				"currentHelper": "normal",
+				"helperAttributes": {},
+				"time": 1475631146652,
+				"name": "http://localhost:8080/v1/cancelJob?id=1",
+				"description": "Cancel a specific job if it is in the downloading or created state ",
+				"collectionId": "e96d6fb1-60b7-103a-0098-d6e1290c3a6e",
+				"responses": []
+			},
+			{
+				"id": "c44e4641-79fc-872d-b20b-dfbd56e14895",
+				"headers": "Content-Type: application/json\n",
+				"url": "http://localhost:8080/v1/job?id=1",
+				"preRequestScript": null,
+				"pathVariables": {},
+				"method": "DELETE",
+				"data": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"1\"\n}",
+				"dataMode": "raw",
+				"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+				"currentHelper": "normal",
+				"helperAttributes": {},
+				"time": 1475631150492,
+				"name": "http://localhost:8080/v1/job?id=1",
+				"description": "deleting a specific job",
+				"collectionId": "e96d6fb1-60b7-103a-0098-d6e1290c3a6e",
+				"responses": []
+			},
+			{
+				"id": "de8abdde-0825-9a55-22bf-8a31213d2bef",
+				"headers": "Content-Type: application/json\n",
+				"url": "http://localhost:8080/v1/listJobs",
+				"preRequestScript": null,
+				"pathVariables": {},
+				"method": "GET",
+				"data": "{\n\t\"name\": \"google map update for 3\",\n\t\"softwareVersion\": \"1.3.4\",\n\t\"vehicleId\": \"tesla3\",\n\t\"rollOutId\": \"1\"\n}",
+				"dataMode": "raw",
+				"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+				"currentHelper": "normal",
+				"helperAttributes": {},
+				"time": 1475631129935,
+				"name": "http://localhost:8080/v1/listJobs",
+				"description": "list all jobs",
+				"collectionId": "e96d6fb1-60b7-103a-0098-d6e1290c3a6e",
+				"responses": []
+			}
+		],
+		"timestamp": 0,
+		"synced": true,
+		"syncedFilename": "",
+		"remote_id": 0,
+		"remoteLink": "",
+		"remoteLinkUpdatedAt": null,
+		"public": false,
+		"owner": 0,
+		"subscribed": false,
+		"createdAt": 1475625464264,
+		"updatedAt": 1475625464264,
+		"write": true,
+		"isDeleted": false,
+		"published": false,
+		"favorite": false,
+		"permissions": {},
+		"syncedPermissions": {},
+		"sharedWithTeam": false,
+		"shared": false,
+		"hasRequests": true
+	},
+	"folder": null,
+	"environment": {
+		"id": "ae7e5721-59d0-fab2-d9e3-a2e40c4cff23",
+		"name": "cc-int-integration",
+		"values": [
+			{
+				"key": "scheme",
+				"value": "https",
+				"type": "text",
+				"name": "scheme",
+				"enabled": true,
+				"hovered": false
+			},
+			{
+				"key": "host",
+				"value": "r3-cc-int.vip.phx2.symcpe.com",
+				"type": "text",
+				"name": "host",
+				"enabled": true,
+				"hovered": false
+			},
+			{
+				"key": "r3_url",
+				"value": "{{scheme}}://{{host}}/r3_epmp_i",
+				"type": "text",
+				"name": "r3_url",
+				"enabled": true,
+				"hovered": false
+			},
+			{
+				"key": "gc_url",
+				"value": "http://gc-cc-dev-integration-1.vip.phx2.symcpe.com/gc_epmp_i",
+				"type": "text",
+				"name": "gc_url",
+				"enabled": true,
+				"hovered": false
+			},
+			{
+				"key": "token",
+				"value": "eyJraWQiOiI1U2MzeUY1R1M5SzVfRktUZ2JhbUhnIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJ7XCJkb21haW5faWRcIjpcIkZMWmJjTmZRUVZ1Ykx5d0tHNnU4R0FcIixcInByaXZzXCI6XCJtYW5hZ2Vfb3JnX3VuaXRzIHByb3Zpc2lvbl9jdXN0b21lciB2aWV3X2RldmljZXMgc2NzZW1fdmlld19yZWNvdmVyeV9rZXlzIHZpZXdfc2VydmljZXMgZWRpdF9zdGF0aWNfZ3JvdXBzIG1hbmFnZV9kZXAgcmVhZF9hcG5zX2NlcnQgdmlld19vcmdfdW5pdHMgdmlld19zdGF0aWNfZ3JvdXBzIHJlYWRfcmVwb3J0IG1hbmFnZV9vcmdhbml6YXRpb24gdmlld19ncm91cHMgcmVhZF9ldmVudHMgdmlld19wcm9kdWN0cyBtYW5hZ2VfYWxlcnRfcnVsZSBtYW5hZ2VfZ3JvdXBzIG1hbmFnZV9zZXJ2aWNlcyBnZW5lcmF0ZV9yZXBvcnQgdmlld19wYW5lbCBtYW5hZ2VfdXNlcnMgY3JlYXRlX3VzZXJzIHNjc2VtX2FjY291bnRfYWRtaW5pc3RyYXRvciBzY2FuX2FsbF91c2VycyBtYW5hZ2VfYXBuc19jZXJ0IHJlYWRfYWxsX29yZ2FuaXphdGlvbnMgdmlld19ldmVudHMgbWFuYWdlX3Byb2R1Y3RzIHNjc2VtX21hbmFnZV9wb2xpY3kgZGVsZXRlX3N0YXRpY19ncm91cHMgdmlld191c2VycyBtYW5hZ2VfZGV2aWNlcyByZWFkX29yZ2FuaXphdGlvbiBtYW5hZ2VfZG9tYWluIG1hbmFnZV9pZHBfZGVzY3JpcHRvcnMgbWFuYWdlX21kbSBtYW5hZ2VfYWRzeW5jX2pvYnMgZW5yb2xsX2RldmljZXMgY3JlYXRlX2RldmljZXMgcmVhZF9wYW5lbCBlZGl0X3VzZXJzIGNyZWF0ZV9zdGF0aWNfZ3JvdXBzIG1hbmFnZV9saWNlbnNlcyBtYW5hZ2VfYXBwX2VudGl0bGVtZW50IHZpZXdfcm9sZXNcIixcImN1c3RvbWVyX2lkXCI6XCI4bU1Nakt3QlNRdWtCZHpOaUJWZXJ3XCIsXCJ1cmlcIjpcIlwvdjFcL21kclwvdXNlcnNcL1lnVTlLQl91UjF5ZkluNkluNmVUMFFcIn0iLCJ2ZXIiOjEsImlzcyI6ImlkX2VwbXBfaV8taWQtZDljMSIsImV4cCI6MTQ3NTI4OTQ0NCwiaWF0IjoxNDc1MjAzMDQ0LCJqdGkiOiJfTkNiTHA1ZFRFdWZ5eDlJaWszSXlnIn0.OsZF963N2hU32VGf969vMfhfp48H5LROXABUgREFdmIIS0Mn25gpz_FOKaPoz7QGIy0U6ifzGpRF36QhXw852ejyOyXePE0kpLetcI1Tqb4YYChnw7c66Gcq8W_X7mLRWafdKT4ztITPAcOh71AeR9QV_h-z5B9HOGrzELowunz-7LEKrFVT3bjWwWkefMmtbe4DHL1zpyc_CPHVlv1t4Ss7PMn4oEDRrkhDrk_ekGNRvLUpQArNPBw77hjnI4AKfhhFRFaOCH3axNjvPkftX18wCjd6xrao7d-2w0eaQ8iAsD0cY7UKJ0BdgkRvbOcYQUwk712aeuEmYPyuhVm6VA",
+				"type": "text",
+				"name": "token",
+				"enabled": true,
+				"hovered": false
+			},
+			{
+				"key": "set_ids",
+				"value": "true",
+				"type": "text",
+				"enabled": true,
+				"hovered": false
+			},
+			{
+				"key": "domain_id",
+				"type": "text",
+				"value": "FLZbcNfQQVubLywKG6u8GA",
+				"enabled": true,
+				"hovered": false
+			},
+			{
+				"key": "customer_id",
+				"type": "text",
+				"value": "8mMMjKwBSQukBdzNiBVerw",
+				"enabled": true,
+				"hovered": false
+			},
+			{
+				"key": "admin_email",
+				"value": "Ahiroy.Izehepiy@testmail.qalabs.symantec.com",
+				"type": "text",
+				"enabled": true,
+				"hovered": false
+			},
+			{
+				"key": "admin_password",
+				"value": "Scsem4all!",
+				"type": "text",
+				"enabled": true,
+				"hovered": false
+			},
+			{
+				"key": "basic_auth",
+				"value": "YWRtaW46cGFzc3dvcmQ=",
+				"type": "text",
+				"enabled": true
+			}
+		],
+		"timestamp": 1475203044568,
+		"synced": false,
+		"syncedFilename": "",
+		"team": null,
+		"isDeleted": false
+	},
+	"globals": [],
+	"results": [
+		{
+			"id": "57aa206c-95a4-4fe9-0938-01ace3a67f69",
+			"name": "http://localhost:8080/v1/rollOut",
+			"url": "http://localhost:8080/v1/rollOut",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				301
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			],
+			"time": 301,
+			"totalRequestTime": 301,
+			"iterationResults": {}
+		},
+		{
+			"id": "2e3377e3-e903-4c10-4c64-0654a47ea588",
+			"name": "http://localhost:8080/v1/job",
+			"url": "http://localhost:8080/v1/job",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				46
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			],
+			"time": 46,
+			"totalRequestTime": 46,
+			"iterationResults": {}
+		},
+		{
+			"id": "de8abdde-0825-9a55-22bf-8a31213d2bef",
+			"name": "http://localhost:8080/v1/listJobs",
+			"url": "http://localhost:8080/v1/listJobs",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				26
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			],
+			"time": 26,
+			"totalRequestTime": 26,
+			"iterationResults": {}
+		},
+		{
+			"id": "692f5a4b-66be-72b7-1a23-01a0cec401eb",
+			"name": "http://localhost:8080/v1/listJobs?rollOutId=2",
+			"url": "http://localhost:8080/v1/listJobs?rollOutId=1",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				23
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			],
+			"time": 23,
+			"totalRequestTime": 23,
+			"iterationResults": {}
+		},
+		{
+			"id": "73a3fc73-2605-eef9-aa6a-a3adae75a943",
+			"name": "http://localhost:8080/v1/job?id=1",
+			"url": "http://localhost:8080/v1/job?id=1",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				20
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			],
+			"time": 20,
+			"totalRequestTime": 20,
+			"iterationResults": {}
+		},
+		{
+			"id": "ab7118c6-7565-8641-a314-7106cda47af6",
+			"name": "http://localhost:8080/v1/cancelJob?id=1",
+			"url": "http://localhost:8080/v1/cancelJob?id=1",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			],
+			"time": 15,
+			"totalRequestTime": 15,
+			"iterationResults": {}
+		},
+		{
+			"id": "c44e4641-79fc-872d-b20b-dfbd56e14895",
+			"name": "http://localhost:8080/v1/job?id=1",
+			"url": "http://localhost:8080/v1/job?id=1",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				27
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			],
+			"time": 27,
+			"totalRequestTime": 27,
+			"iterationResults": {}
+		},
+		{
+			"id": "315c8d11-525f-5b73-8d53-c6a09101c7c9",
+			"name": "http://localhost:8080/v1/rollOuts",
+			"url": "http://localhost:8080/v1/rollOuts",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				42
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			],
+			"time": 42,
+			"totalRequestTime": 42,
+			"iterationResults": {}
+		},
+		{
+			"id": "135dd412-67a0-1d4e-dd91-8f66ac28708d",
+			"name": "http://localhost:8080/v1/statusList",
+			"url": "http://localhost:8080/v1/statusList",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			],
+			"time": 15,
+			"totalRequestTime": 15,
+			"iterationResults": {}
+		},
+		{
+			"id": "144554d7-f134-b3db-6ec5-b8929900d83f",
+			"name": "http://localhost:8080/v1/statusList?rollOutId=1&jobId=1",
+			"url": "http://localhost:8080/v1/statusList?rollOutId=1",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			],
+			"time": 11,
+			"totalRequestTime": 11,
+			"iterationResults": {}
+		},
+		{
+			"id": "4c843649-10d4-f656-0351-93eacaeeb2c4",
+			"name": "http://localhost:8080/v1/status",
+			"url": "http://localhost:8080/v1/status?",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request",
+				"detail": "The request cannot be fulfilled due to bad syntax."
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			],
+			"time": 16,
+			"totalRequestTime": 16,
+			"iterationResults": {}
+		},
+		{
+			"id": "6bec0f96-03bd-8224-223e-a6ec094214a8",
+			"name": "http://localhost:8080/v1/rollOutReport",
+			"url": "http://localhost:8080/v1/rollOutReport?id=1",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			],
+			"time": 19,
+			"totalRequestTime": 19,
+			"iterationResults": {}
+		},
+		{
+			"id": "6feb95bf-8431-d135-8a4e-10f14894600a",
+			"name": "http://localhost:8080/v1/rollOut?id=1",
+			"url": "http://localhost:8080/v1/rollOut?id=1",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			],
+			"time": 13,
+			"totalRequestTime": 13,
+			"iterationResults": {}
+		}
+	],
+	"totalPass": 13,
+	"totalFail": 0,
+	"totalTime": 574,
+	"lifecycle": "done",
+	"willStop": false,
+	"requests": [
+		{
+			"name": "http://localhost:8080/v1/rollOut",
+			"id": "57aa206c-95a4-4fe9-0938-01ace3a67f69",
+			"url": "http://localhost:8080/v1/rollOut",
+			"time": 301,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"gridTitles": [
+				"Status code is 200"
+			],
+			"gridData": [
+				[
+					true
+				]
+			],
+			"tests": {
+				"Status code is 200": true
+			}
+		},
+		{
+			"name": "http://localhost:8080/v1/job",
+			"id": "2e3377e3-e903-4c10-4c64-0654a47ea588",
+			"url": "http://localhost:8080/v1/job",
+			"time": 46,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"gridTitles": [
+				"Status code is 200"
+			],
+			"gridData": [
+				[
+					true
+				]
+			],
+			"tests": {
+				"Status code is 200": true
+			}
+		},
+		{
+			"name": "http://localhost:8080/v1/listJobs",
+			"id": "de8abdde-0825-9a55-22bf-8a31213d2bef",
+			"url": "http://localhost:8080/v1/listJobs",
+			"time": 26,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"gridTitles": [
+				"Status code is 200"
+			],
+			"gridData": [
+				[
+					true
+				]
+			],
+			"tests": {
+				"Status code is 200": true
+			}
+		},
+		{
+			"name": "http://localhost:8080/v1/listJobs?rollOutId=2",
+			"id": "692f5a4b-66be-72b7-1a23-01a0cec401eb",
+			"url": "http://localhost:8080/v1/listJobs?rollOutId=1",
+			"time": 23,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"gridTitles": [
+				"Status code is 200"
+			],
+			"gridData": [
+				[
+					true
+				]
+			],
+			"tests": {
+				"Status code is 200": true
+			}
+		},
+		{
+			"name": "http://localhost:8080/v1/job?id=1",
+			"id": "73a3fc73-2605-eef9-aa6a-a3adae75a943",
+			"url": "http://localhost:8080/v1/job?id=1",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"gridTitles": [
+				"Status code is 200"
+			],
+			"gridData": [
+				[
+					true
+				]
+			],
+			"tests": {
+				"Status code is 200": true
+			}
+		},
+		{
+			"name": "http://localhost:8080/v1/cancelJob?id=1",
+			"id": "ab7118c6-7565-8641-a314-7106cda47af6",
+			"url": "http://localhost:8080/v1/cancelJob?id=1",
+			"time": 15,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"gridTitles": [
+				"Status code is 200"
+			],
+			"gridData": [
+				[
+					true
+				]
+			],
+			"tests": {
+				"Status code is 200": true
+			}
+		},
+		{
+			"name": "http://localhost:8080/v1/job?id=1",
+			"id": "c44e4641-79fc-872d-b20b-dfbd56e14895",
+			"url": "http://localhost:8080/v1/job?id=1",
+			"time": 27,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"gridTitles": [
+				"Status code is 200"
+			],
+			"gridData": [
+				[
+					true
+				]
+			],
+			"tests": {
+				"Status code is 200": true
+			}
+		},
+		{
+			"name": "http://localhost:8080/v1/rollOuts",
+			"id": "315c8d11-525f-5b73-8d53-c6a09101c7c9",
+			"url": "http://localhost:8080/v1/rollOuts",
+			"time": 42,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"gridTitles": [
+				"Status code is 200"
+			],
+			"gridData": [
+				[
+					true
+				]
+			],
+			"tests": {
+				"Status code is 200": true
+			}
+		},
+		{
+			"name": "http://localhost:8080/v1/statusList",
+			"id": "135dd412-67a0-1d4e-dd91-8f66ac28708d",
+			"url": "http://localhost:8080/v1/statusList",
+			"time": 15,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"gridTitles": [
+				"Status code is 200"
+			],
+			"gridData": [
+				[
+					true
+				]
+			],
+			"tests": {
+				"Status code is 200": true
+			}
+		},
+		{
+			"name": "http://localhost:8080/v1/statusList?rollOutId=1&jobId=1",
+			"id": "144554d7-f134-b3db-6ec5-b8929900d83f",
+			"url": "http://localhost:8080/v1/statusList?rollOutId=1",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"gridTitles": [
+				"Status code is 200"
+			],
+			"gridData": [
+				[
+					true
+				]
+			],
+			"tests": {
+				"Status code is 200": true
+			}
+		},
+		{
+			"name": "http://localhost:8080/v1/status",
+			"id": "4c843649-10d4-f656-0351-93eacaeeb2c4",
+			"url": "http://localhost:8080/v1/status?",
+			"time": 16,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request",
+				"detail": "The request cannot be fulfilled due to bad syntax."
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"gridTitles": [
+				"Status code is 200"
+			],
+			"gridData": [
+				[
+					true
+				]
+			],
+			"tests": {
+				"Status code is 200": true
+			}
+		},
+		{
+			"name": "http://localhost:8080/v1/rollOutReport",
+			"id": "6bec0f96-03bd-8224-223e-a6ec094214a8",
+			"url": "http://localhost:8080/v1/rollOutReport?id=1",
+			"time": 19,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"gridTitles": [
+				"Status code is 200"
+			],
+			"gridData": [
+				[
+					true
+				]
+			],
+			"tests": {
+				"Status code is 200": true
+			}
+		},
+		{
+			"name": "http://localhost:8080/v1/rollOut?id=1",
+			"id": "6feb95bf-8431-d135-8a4e-10f14894600a",
+			"url": "http://localhost:8080/v1/rollOut?id=1",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"gridTitles": [
+				"Status code is 200"
+			],
+			"gridData": [
+				[
+					true
+				]
+			],
+			"tests": {
+				"Status code is 200": true
+			}
+		}
+	],
+	"synced": false
+}

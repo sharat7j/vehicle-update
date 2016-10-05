@@ -1,6 +1,7 @@
 package com.tesla.code.controller;
 
 import com.tesla.code.beans.JobStatus;
+import com.tesla.code.beans.request.JobStatusRequest;
 import com.tesla.code.exceptions.MissingDataException;
 import com.tesla.code.service.JobStatusService;
 import org.junit.Before;
@@ -41,7 +42,7 @@ public class JobStatusControllerTest {
     @Test
     public void testCreateJobValidInput() throws Exception, MissingDataException {
         when(jobStatusService.createJobStatus(any(JobStatus.class))).thenReturn(new JobStatus());
-        assertNotNull(jobStatusController.createJobStatus(new JobStatus()));
+        assertNotNull(jobStatusController.createJobStatus(new JobStatusRequest()));
     }
 
     @Test

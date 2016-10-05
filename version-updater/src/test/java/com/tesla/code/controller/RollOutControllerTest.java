@@ -2,6 +2,7 @@ package com.tesla.code.controller;
 
 import com.tesla.code.beans.RollOut;
 import com.tesla.code.beans.RollOutReport;
+import com.tesla.code.beans.request.RollOutRequest;
 import com.tesla.code.exceptions.MissingDataException;
 import com.tesla.code.exceptions.UniquenessException;
 import com.tesla.code.service.RollOutService;
@@ -38,13 +39,13 @@ public class RollOutControllerTest {
     @Test(expected = MissingDataException.class)
     public void testCreateRollOutException() throws Exception, MissingDataException {
         when(rollOutService.createRollOut(any(RollOut.class))).thenThrow(new MissingDataException("name attribute is missing"));
-        rollOutController.createRollOut(new RollOut());
+        rollOutController.createRollOut(new RollOutRequest());
     }
 
     @Test(expected = UniquenessException.class)
     public void testCreateRollOutExistingConflict() throws Exception, MissingDataException {
         when(rollOutService.createRollOut(any(RollOut.class))).thenThrow(new UniquenessException("rollout with same name already exists"));
-        rollOutController.createRollOut(new RollOut());
+        rollOutController.createRollOut(new RollOutRequest());
 
     }
 

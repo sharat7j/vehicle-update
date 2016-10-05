@@ -1,6 +1,7 @@
 package com.tesla.code.beans;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.tesla.code.beans.request.JobRequest;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -101,5 +102,17 @@ public class Job {
 
     public void setRollOutId(String rollOutId) {
         this.rollOutId = rollOutId;
+    }
+
+    public static Job getJobFromRequest(JobRequest jobRequest) {
+        if(jobRequest == null) {
+            return null;
+        }
+        Job job = new Job();
+        job.setRollOutId(jobRequest.getRollOutId());
+        job.setVehicleId(jobRequest.getVehicleId());
+        job.setSoftwareVersion(jobRequest.getSoftwareVersion());
+        job.setName(jobRequest.getName());
+        return job;
     }
 }

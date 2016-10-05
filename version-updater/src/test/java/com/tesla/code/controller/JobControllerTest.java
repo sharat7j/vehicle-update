@@ -2,6 +2,7 @@ package com.tesla.code.controller;
 
 import com.tesla.code.beans.Job;
 import com.tesla.code.beans.JobStatus;
+import com.tesla.code.beans.request.JobRequest;
 import com.tesla.code.exceptions.MissingDataException;
 import com.tesla.code.exceptions.UniquenessException;
 import com.tesla.code.service.JobService;
@@ -55,16 +56,17 @@ public class JobControllerTest {
     @Test
     public void testNewJobCreationWithNoRollOutId() throws MissingDataException, UniquenessException {
         exception.expect(MissingDataException.class);
-        jobController.createJob(new Job());
+        jobController.createJob(new JobRequest());
     }
 
     @Test
     public void testCreateJobValidInput() throws Exception, MissingDataException {
-        Job job = new Job();
-        job.setRollOutId("1");
-        when(jobService.createJob(any(Job.class))).thenReturn(job);
-        assertNotNull(jobController.createJob(job));
-        assertEquals(job.getRollOutId(), "1");
+        JobRequest jobR = new JobRequest();
+        jobR.setRollOutId("1");
+        when(jobService.createJob(any(Job.class))).thenReturn(Job.getJobFromRequest(jobR));
+        assertNotNull(jobController.createJob(jobR));
+        Job result = jobController.createJob(jobR);
+        assertEquals(result.getRollOutId(), "1");
 
     }
 

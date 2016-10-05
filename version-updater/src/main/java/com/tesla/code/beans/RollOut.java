@@ -1,5 +1,7 @@
 package com.tesla.code.beans;
 
+import com.tesla.code.beans.request.RollOutRequest;
+
 import javax.persistence.*;
 
 /**
@@ -48,6 +50,16 @@ public class RollOut {
 
     public void setDate_created(Long date_created) {
         this.date_created = date_created;
+    }
+
+    public static RollOut getRollOutFromRequest(RollOutRequest request) {
+        if(request == null) {
+            return null;
+        }
+        RollOut rollOut = new RollOut();
+        rollOut.setName(request.getName());
+        rollOut.setDescription(request.getDescription());
+        return rollOut;
     }
 }
 

@@ -1,6 +1,7 @@
 package com.tesla.code.controller;
 
 import com.tesla.code.beans.JobStatus;
+import com.tesla.code.beans.request.JobStatusRequest;
 import com.tesla.code.exceptions.InvalidDataException;
 import com.tesla.code.exceptions.MissingDataException;
 import com.tesla.code.service.JobStatusService;
@@ -28,7 +29,7 @@ public class JobStatusController {
      * Create a new Job Status that is associate to a specific job. The job Id is added in the serialized JSON object
      * of JobStatus
      *
-     * @param jobStatus The JobStatus serialized JSON that containing the Job Id to which this status is associated
+     * @param jobStatusRequest The job status request serialized JSON that containing the Job Id to which this status is associated
      * @return The JobStatus object as stored with the unique identifier to easily retrieve this later.
      * @throws MissingDataException thrown if the job status JSON is null or if the Job Id is not present.
      * @throws InvalidDataException Thrown if the job state update does not follow a logical path i.e. can only go from CREATED to DOWNLOADING and not directly to INSTALLING from CREATED.
@@ -41,8 +42,8 @@ public class JobStatusController {
             @ApiResponse(code = 400, message = "Bad Request", response = String.class)
     })
     public JobStatus createJobStatus(@ApiParam(value = "The JobStatus JSON message")
-                                     @RequestBody JobStatus jobStatus) throws MissingDataException, InvalidDataException {
-        return jobStatusService.createJobStatus(jobStatus);
+                                     @RequestBody JobStatusRequest jobStatusRequest) throws MissingDataException, InvalidDataException {
+        return jobStatusService.createJobStatus(JobStatus.getJobStatusFromRequest(jobStatusRequest));
     }
 
     /**

@@ -3,6 +3,7 @@ package com.tesla.code.controller;
 
 import com.tesla.code.beans.RollOut;
 import com.tesla.code.beans.RollOutReport;
+import com.tesla.code.beans.request.RollOutRequest;
 import com.tesla.code.exceptions.MissingDataException;
 import com.tesla.code.exceptions.UniquenessException;
 import com.tesla.code.service.RollOutService;
@@ -29,7 +30,7 @@ public class RollOutController {
     /**
      * Create a new roll out with a unique name
      *
-     * @param rollOut The roll out object serialized into a JSON on the post request.
+     * @param rollOutRequest The roll out request object serialized into a JSON on the post request.
      * @return The RollOut object confirming that its stored in the persistence store.
      * @throws UniquenessException  Thrown if the roll out with a similar name already exists
      * @throws MissingDataException Thrown if required attributes are missing from the JSON payload
@@ -42,8 +43,8 @@ public class RollOutController {
                     "if the name attribute is empty", response = String.class)
     })
     public RollOut createRollOut(@ApiParam(value = "RollOut payload as JSON for creation")
-                                 @RequestBody RollOut rollOut) throws UniquenessException, MissingDataException {
-        return rollOutService.createRollOut(rollOut);
+                                 @RequestBody RollOutRequest rollOutRequest) throws UniquenessException, MissingDataException {
+        return rollOutService.createRollOut(RollOut.getRollOutFromRequest(rollOutRequest));
     }
 
     /**
