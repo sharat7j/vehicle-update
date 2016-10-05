@@ -25,6 +25,23 @@ You will need
 - Postman client to easily download and test the integration test suite
 
 
+## Deployment
+
+To deploy we have multiple ways:
+
+- Docker:  A utility script is provided here to enable you to deploy out of the box (provided you have maven and docker installed)
+
+   ```
+   $> ./redeploy.sh
+   ```
+   The service would be deployed at localhost:80
+- Jar: The jar can be built by using maven. Once built we can run the jar as indicated below
+   ```
+   $> mvn clean install
+   $> java -jar version-updater/target/version-updater-1.0-SNAPSHOT.jar
+   ```
+   The service would be deployed at localhost:8080
+
 ## API docs
 
 The API documentation is powered by swagger and can be located at /target/generated/swagger.json
